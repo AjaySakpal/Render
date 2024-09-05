@@ -1,5 +1,5 @@
 services:
-  - type: web_service
+  - type: web
     name: configserver
     env: docker
     plan: free
@@ -9,7 +9,7 @@ services:
         value: http://configserver:8085
     healthCheckPath: /actuator/health
 
-  - type: web_service
+  - type: web
     name: apigatewayservice
     env: docker
     plan: free
@@ -22,7 +22,7 @@ services:
     startCommand: ""
     healthCheckPath: /actuator/health
 
-  - type: web_service
+  - type: web
     name: userdomainservice
     env: docker
     plan: free
