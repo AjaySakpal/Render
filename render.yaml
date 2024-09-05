@@ -3,30 +3,30 @@ services:
     name: configserver
     env: docker
     plan: free
-    image: ajaysakpal/microservices1:practice-configserver-latest
+    image: "ajaysakpal/microservices1:practice-configserver-latest"
     envVars:
       - key: CONFIG_SERVER_URL
-        value: http://configserver:8085
-    healthCheckPath: /actuator/health
+        value: "http://configserver:8085"
+    healthCheckPath: "/actuator/health"
 
   - type: web
     name: apigatewayservice
     env: docker
     plan: free
-    image: ajaysakpal/microservices1:practice-apigatewayservice-latest
+    image: "ajaysakpal/microservices1:practice-apigatewayservice-latest"
     envVars:
       - key: CONFIG_SERVER_URL
-        value: http://configserver:8085
+        value: "http://configserver:8085"
       - key: USERSERVICE_DOMAIN
-        value: userdomainservice
-    healthCheckPath: /actuator/health
+        value: "userdomainservice"
+    healthCheckPath: "/actuator/health"
 
   - type: web
     name: userdomainservice
     env: docker
     plan: free
-    image: ajaysakpal/microservices1:practice-userdomainservice-latest
+    image: "ajaysakpal/microservices1:practice-userdomainservice-latest"
     envVars:
       - key: CONFIG_SERVER_URL
-        value: http://configserver:8085
-    healthCheckPath: /actuator/health
+        value: "http://configserver:8085"
+    healthCheckPath: "/actuator/health"
