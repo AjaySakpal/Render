@@ -3,7 +3,7 @@ services:
     name: configserver
     env: docker
     plan: free
-    image: "ajaysakpal/microservices1:practice-configserver-latest"
+    image: "docker.io/ajaysakpal/microservices1:practice-configserver-latest"
     envVars:
       - key: CONFIG_SERVER_URL
         value: "http://configserver:8085"
@@ -13,7 +13,7 @@ services:
     name: apigatewayservice
     env: docker
     plan: free
-    image: "ajaysakpal/microservices1:practice-apigatewayservice-latest"
+    image: "docker.io/ajaysakpal/microservices1:practice-apigatewayservice-latest"
     envVars:
       - key: CONFIG_SERVER_URL
         value: "http://configserver:8085"
@@ -25,7 +25,7 @@ services:
     name: userdomainservice
     env: docker
     plan: free
-    image: "ajaysakpal/microservices1:practice-userdomainservice-latest"
+    image: "docker.io/ajaysakpal/microservices1:practice-userdomainservice-latest"
     envVars:
       - key: CONFIG_SERVER_URL
         value: "http://configserver:8085"
