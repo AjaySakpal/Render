@@ -3,7 +3,7 @@ services:
     name: configserver
     env: docker
     plan: free
-    dockerImage: ajaysakpal/microservices1:practice-configserver-latest
+    image: ajaysakpal/microservices1:practice-configserver-latest
     envVars:
       - key: CONFIG_SERVER_URL
         value: http://configserver:8085
@@ -13,22 +13,20 @@ services:
     name: apigatewayservice
     env: docker
     plan: free
-    dockerImage: ajaysakpal/microservices1:practice-apigatewayservice-latest
+    image: ajaysakpal/microservices1:practice-apigatewayservice-latest
     envVars:
       - key: CONFIG_SERVER_URL
         value: http://configserver:8085
       - key: USERSERVICE_DOMAIN
         value: userdomainservice
-    startCommand: ""
     healthCheckPath: /actuator/health
 
   - type: web
     name: userdomainservice
     env: docker
     plan: free
-    dockerImage: ajaysakpal/microservices1:practice-userdomainservice-latest
+    image: ajaysakpal/microservices1:practice-userdomainservice-latest
     envVars:
       - key: CONFIG_SERVER_URL
         value: http://configserver:8085
-    startCommand: ""
     healthCheckPath: /actuator/health
