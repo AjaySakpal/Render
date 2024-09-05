@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: configserver
+    env: docker
+    plan: free
+    docker:
+      image: ajaysakpal/microservices1:practice-configserver-latest
+    envVars:
+      - key: CONFIG_SERVER_URL
+        value: http://configserver:8085
+    healthCheckPath: /actuator/health
+    healthCheckIntervalSeconds: 30
+    healthCheckTimeoutSeconds: 10
+    healthCheckRetries: 3
+
+  - type: web
+    name: apigatewayservice
+    env: docker
+    plan: free
+    docker:
+      image: ajaysakpal/microservices1:practice-apigatewayservice-latest
+    envVars:
+      - key: CONFIG_SERVER_URL
+        value: http://configserver:8085
+      - key: USERSERVICE_DOMAIN
+        value: userdomainservice
+    dependsOn:
+      - configserver
+
+  - type: web
+    name: userdomainservice
+    env: docker
+    plan: free
+    docker:
+      image: ajaysakpal/microservices1:practice-userdomainservice-latest
+    envVars:
+      - key: CONFIG_SERVER_URL
+        value: http://configserver:8085
+    dependsOn:
+      - configserver
